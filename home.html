@@ -3,143 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ClothsByRudra Shop</title>
+  <title>Shop - ClothsByRudra</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f8f9fa;
-    }
-
-    header {
-      background: #667eea;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
       margin: 0;
+      background: #f4f4f4;
     }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       padding: 20px;
     }
 
     .product-card {
-      background: white;
+      background: #fff;
       border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       padding: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .product-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
 
     .product-card img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
+      height: 200px;
+      object-fit: cover;
     }
 
     .product-card h3 {
       margin: 10px 0 5px 0;
+      color: #333;
     }
 
     .product-card p {
-      margin: 5px 0;
-      font-weight: bold;
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 10px;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
+    .product-card .btn {
       padding: 10px 15px;
-      background: #667eea;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      cursor: pointer;
       border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
     }
 
-    .btn:hover {
-      background: #764ba2;
+    .product-card .btn:hover {
+      background: linear-gradient(135deg, #764ba2, #667eea);
     }
 
     .cart {
       position: fixed;
-      top: 80px;
       right: 20px;
-      width: 280px;
-      background: white;
+      top: 100px;
+      width: 300px;
+      background: #fff;
+      padding: 20px;
       border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     }
 
     .cart h2 {
-      margin-top: 0;
-      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
     }
 
     .cart-item {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .cart-item button {
-      background: none;
       border: none;
-      color: red;
+      background: #ff4d4d;
+      color: #fff;
+      border-radius: 6px;
       cursor: pointer;
+      padding: 2px 6px;
     }
 
-    @media(max-width: 768px){
-      .cart {
-        position: static;
-        width: auto;
-        margin: 20px;
-      }
+    .cart button.btn {
+      width: 100%;
+      margin-top: 10px;
     }
-
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>ClothsByRudra Shop 🛍️</h1>
-    <p>Login successful! Welcome to our store.</p>
-  </header>
+  <h1 style="text-align:center; margin-top:20px;">Welcome to ClothsByRudra Shop</h1>
 
-  <!-- Products Section -->
   <div class="products">
+    <!-- Product 2: Printed T-Shirt -->
     <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Blue T-Shirt">
-      <h3>Blue T-Shirt</h3>
-      <p>₹499</p>
-      <button class="btn" onclick="addToCart('Blue T-Shirt', 499)">Add to Cart</button>
-    </div>
-
-    <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Red Hoodie">
-      <h3>Red Hoodie</h3>
-      <p>₹799</p>
-      <button class="btn" onclick="addToCart('Red Hoodie', 799)">Add to Cart</button>
-    </div>
-
-    <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Black Jeans">
-      <h3>Black Jeans</h3>
-      <p>₹999</p>
-      <button class="btn" onclick="addToCart('Black Jeans', 999)">Add to Cart</button>
+      <img src="https://identical-apricot-znd9l31p62.edgeone.app/51jjcZP0L0L._SY741_.jpg" alt="Printed T-Shirt">
+      <h3>Printed T-Shirt</h3>
+      <p>₹650</p>
+      <button class="btn" onclick="addToCart('Printed T-Shirt', 650)">Add to Cart</button>
     </div>
   </div>
 
@@ -195,15 +168,4 @@
 
 </body>
 </html>
-<div class="product-card">
-  <img src="https://identical-apricot-znd9l31p62.edgeone.app/51jjcZP0L0L._SY741_.jpg" alt="Printed T-Shirt">
-  <h3>Printed T-Shirt</h3>
-  <p>₹650</p>
-  <button class="btn" onclick="addToCart('Printed T-Shirt', 650)">Add to Cart</button>
-</div>
-<div class="cart">
-  <h2>Cart 🛒</h2>
-  <div id="cart-items"></div>
-  <p><strong>Total:</strong> ₹<span id="total">0</span></p>
-  <button class="btn" onclick="checkout()">Checkout</button>
-</div>
+
