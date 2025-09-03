@@ -3,79 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Test - Add to Cart</title>
+  <title>Product Page</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
       text-align: center;
-      margin-top: 50px;
+      padding: 20px;
+      width: 320px;
     }
-    img {
-      width: 300px;
-      height: auto;
+
+    .product-card img {
+      max-width: 100%;
       border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
     }
-    button {
-      padding: 12px 25px;
-      background: #4CAF50;
-      color: white;
-      font-size: 16px;
+
+    .product-card h2 {
+      margin: 10px 0;
+      font-size: 22px;
+      color: #333;
+    }
+
+    .product-card .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #e63946;
+      margin: 8px 0;
+    }
+
+    .product-card button {
+      background: #007bff;
+      color: #fff;
       border: none;
+      padding: 12px 20px;
+      font-size: 16px;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
-    button:hover {
-      background: #45a049;
+
+    .product-card button:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
-
-  <h2>Printed T-Shirt - ₹600</h2>
-  <img src="https://identical-apricot-znd9l31p62.edgeone.app/51jBAMkCpAL._SX679_.jpg" alt="Printed T-Shirt">
-  <br><br>
-  <button onclick="addToCart('Printed T-Shirt', 600, 'https://identical-apricot-znd9l31p62.edgeone.app/51jBAMkCpAL._SX679_.jpg')">
-    Add to Cart
-  </button>
-
-  <script>
-    let cart = [];
-
-    function addToCart(name, price, image){
-      cart.push({name, price, image});
-      alert(`${name} added to cart!\nPrice: ₹${price}`);
-      console.log(cart); // cart array check karne ke liye
-    }
-  </script>
-
+  <div class="container">
+    <div class="product-card">
+      <img src="tshirt.png" alt="Printed T-Shirt">
+      <h2>Printed T-Shirt</h2>
+      <p class="price">₹600</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
 </body>
 </html>
-<style>
-  .product-card {
-    text-align: center;
-    margin: 20px auto;
-    width: fit-content;
-  }
 
-  .product-card img {
-    display: block;
-    margin: 0 auto 10px auto;
-    max-width: 300px;
-    border-radius: 10px;
-  }
-
-  .product-card h2 {
-    margin: 10px 0 5px 0;
-  }
-
-  .product-card .price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-top: 5px;
-    display: block;
-  }
-</style>
