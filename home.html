@@ -3,48 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - ClothsByRudra</title>
+  <title>ClothsByRudra Shop</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-      text-align: center;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
     }
+
     header {
       background: #667eea;
       color: white;
       padding: 20px;
+      text-align: center;
     }
-    h1 {
+
+    header h1 {
       margin: 0;
     }
-    .content {
-      padding: 40px;
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
+
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px 0;
+    }
+
+    .product-card p {
+      margin: 5px 0;
+      font-weight: bold;
+    }
+
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
+      margin-top: 10px;
+      padding: 10px 15px;
       background: #667eea;
       color: white;
       border-radius: 6px;
       text-decoration: none;
+      cursor: pointer;
+      border: none;
     }
+
     .btn:hover {
       background: #764ba2;
     }
+
+    .cart {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .cart h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .cart-item button {
+      background: none;
+      border: none;
+      color: red;
+      cursor: pointer;
+    }
+
+    @media(max-width: 768px){
+      .cart {
+        position: static;
+        width: auto;
+        margin: 20px;
+      }
+    }
+
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Welcome to ClothsByRudra 👕✨</h1>
+    <h1>ClothsByRudra Shop 🛍️</h1>
+    <p>Login successful! Welcome to our store.</p>
   </header>
 
-  <div class="content">
-    <p>Login successful! Ye tera main website page hai.</p>
-    <a href="index.html" class="btn">Logout</a>
+  <!-- Products Section -->
+  <div class="products">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Blue T-Shirt">
+      <h3>Blue T-Shirt</h3>
+      <p>₹499</p>
+      <button class="btn" onclick="addToCart('Blue T-Shirt', 499)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Red Hoodie">
+      <h3>Red Hoodie</h3>
+      <p>₹799</p>
+      <button class="btn" onclick="addToCart('Red Hoodie', 799)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Black Jeans">
+      <h3>Black Jeans</h3>
+      <p>₹999</p>
+      <button class="btn" onclick="addToCart('Black Jeans', 999)">Add to Cart</button>
+    </div>
   </div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart">
+    <h2>Cart 🛒</h2>
+    <div id="cart-items"></div>
+    <p><strong>Total:</strong> ₹<span id="total">0</span></p>
+    <button class="btn" onclick="checkout()">Checkout</button>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addToCart(name, price){
+      cart.push({name, price});
+      updateCart();
+    }
+
+    function removeItem(index){
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart(){
+      const cartItemsDiv = document.getElementById("cart-items");
+      const totalSpan = document.getElementById("total");
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index)=>{
+        total += item.price;
+        cartItemsDiv.innerHTML += `
+          <div class="cart-item">
+            <span>${item.name}</span>
+            <span>₹${item.price}</span>
+            <button onclick="removeItem(${index})">x</button>
+          </div>
+        `;
+      });
+      totalSpan.textContent = total;
+    }
+
+    function checkout(){
+      if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+      }
+      alert("Checkout successful! (Payment integration will come later)");
+      cart = [];
+      updateCart();
+    }
+  </script>
+
 </body>
 </html>
