@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Test - Add to Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 12px 25px;
+      background: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Printed T-Shirt - ₹600</h2>
+  <img src="https://identical-apricot-znd9l31p62.edgeone.app/51jBAMkCpAL._SX679_.jpg" alt="Printed T-Shirt">
+  <br><br>
+  <button onclick="addToCart('Printed T-Shirt', 600, 'https://identical-apricot-znd9l31p62.edgeone.app/51jBAMkCpAL._SX679_.jpg')">
+    Add to Cart
+  </button>
+
+  <script>
+    let cart = [];
+
+    function addToCart(name, price, image){
+      cart.push({name, price, image});
+      alert(`${name} added to cart!\nPrice: ₹${price}`);
+      console.log(cart); // cart array check karne ke liye
+    }
+  </script>
+
+</body>
+</html>
